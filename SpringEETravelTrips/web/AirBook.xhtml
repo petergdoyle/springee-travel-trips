@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="templates/web.xhtml"                
+                xmlns:pou="http://primefaces.org/ui">
+
+    <ui:define name="form-title-text">
+        Book Flights
+    </ui:define>
+
+    <ui:define name="form-menu-area"/>
+    <ui:define name="form-instruction-text"/>
+
+    <ui:define name="form-content">
+
+        <pou:wizard widgetVar="wiz" style="width: 600px" 
+                    flowListener="#{airBookBean.onFlowProcess}">  
+
+            <pou:tab title="Personal" id="personal">  
+
+                <pou:panel header="Personal Details">  
+
+                    <h:messages errorClass="error"/>  
+
+                    <h:panelGrid columns="2" columnClasses="label, value" styleClass="grid">  
+                        <h:outputText value="Firstname: *" />  
+                        <pou:inputText required="false" label="firstName"  
+                                       value="#{airBookBean.passenger.firstName}" />  
+
+                        <h:outputText value="Lastname: *" />  
+                        <pou:inputText required="false" label="lastName"  
+                                       value="#{airBookBean.passenger.lastName}" />  
+
+                        <h:outputText value="Country of Residence: * " />  
+                        <pou:inputText required="false" label="countryOfResidencecode"  
+                                       value="#{airBookBean.passenger.countryOfResidenceCode}" />  
+
+                        <h:outputText value="Country of Citizenship: * " />  
+                        <pou:inputText required="false" label="countryOfNationality"  
+                                       value="#{airBookBean.passenger.countryOfNationalityCode}" />  
+
+                        <h:outputText value="Passport Id: * " />  
+                        <pou:inputText required="false" label="passportId"  
+                                       value="#{airBookBean.passenger.passportId}" />  
+
+                        <h:outputText value="Skip to last: " />  
+                        <h:selectBooleanCheckbox value="#{airBookBean.skip}" />  
+                    </h:panelGrid>  
+                </pou:panel>  
+            </pou:tab>  
+
+            <pou:tab title="Payment" id="payment">  
+                <pou:panel header="Payment Details">  
+
+                    <h:messages errorClass="error"/>  
+
+                    <h:panelGrid columns="2" columnClasses="label, value">  
+
+                        <h:outputText value="Name on Credit Card * " />  
+                        <pou:inputText required="false" label="creditCardName"  
+                                       value="#{airBookBean.fop.creditCardName}" />  
+
+                        <h:outputText value="Expiry Date * " />  
+                        <pou:inputText required="false" label="creditExpiry"  
+                                       value="#{airBookBean.fop.creditExpiry}" />  
+
+                        <h:outputText value="CCID * " />  
+                        <pou:inputText required="false" label="creditCcid"  
+                                       value="#{airBookBean.fop.creditCcid}" />  
+
+                        <h:outputText value="Skip to last: " />  
+                        <h:selectBooleanCheckbox value="#{airBookBean.skip}" />  
+                    </h:panelGrid>  
+                </pou:panel>  
+            </pou:tab>  
+
+            <pou:tab title="Contact" id="contact">  
+                <pou:panel header="Contact Information">  
+
+                    <h:messages errorClass="error"/>  
+
+                    <h:panelGrid columns="2" columnClasses="label, value">  
+
+                        <h:outputText value="Contact Phone: * " />  
+                        <pou:inputText required="false" label="contactPhone"  
+                                       value="#{airBookBean.passenger.contactPhone}" />  
+
+                        <h:outputText value="Contact Email: *" />  
+                        <pou:inputText required="false" label="contactEmail"  
+                                       value="#{airBookBean.passenger.contactEmail}" />  
+
+                        <h:outputText value="Skip to last: " />  
+                        <h:selectBooleanCheckbox value="#{airBookBean.skip}" />  
+                    </h:panelGrid>  
+                </pou:panel>  
+            </pou:tab>  
+
+            <pou:tab title="Confirm" id="confirm">  
+                <pou:panel header="Confirmation">  
+
+                    <h:panelGrid id="confirmation" columns="6">  
+
+                        <h:outputText styleClass="outputLabel" value="Firstname: *" />  
+                        <h:outputText  
+                            value="#{airBookBean.passenger.firstName}" />  
+
+                        <h:outputText styleClass="outputLabel" value="Lastname: *" />  
+                        <h:outputText  
+                            value="#{airBookBean.passenger.lastName}" />  
+
+                        <h:outputText styleClass="outputLabel" value="Country of Residence: * " />  
+                        <h:outputText  
+                            value="#{airBookBean.passenger.countryOfResidenceCode}" />  
+
+                        <h:outputText styleClass="outputLabel"   value="Country of Citizenship: * " />  
+                        <h:outputText
+                            value="#{airBookBean.passenger.countryOfNationalityCode}" />  
+
+                        <h:outputText styleClass="outputLabel"  value="Passport Id: * " />  
+                        <h:outputText 
+                            value="#{airBookBean.passenger.passportId}" />  
+
+                        <h:outputText />  
+                        <h:outputText />  
+                        <h:outputText styleClass="outputLabel"  value="Name on Credit Card * " />  
+                        <h:outputText 
+                            value="#{airBookBean.fop.creditCardName}" />  
+
+                        <h:outputText styleClass="outputLabel" value="Expiry Date * " />  
+                        <h:outputText  
+                            value="#{airBookBean.fop.creditExpiry}" />  
+
+                        <h:outputText styleClass="outputLabel" value="CCID * " />  
+                        <h:outputText  
+                            value="#{airBookBean.fop.creditCcid}" />  
+
+                        <h:outputText />  
+                        <h:outputText />  
+                        <h:outputText styleClass="outputLabel"  value="Contact Phone: * " />  
+                        <h:outputText 
+                            value="#{airBookBean.passenger.contactPhone}" />  
+
+                        <h:outputText styleClass="outputLabel" value="Contact Email: *" />  
+                        <h:outputText  
+                            value="#{airBookBean.passenger.contactEmail}" />  
+
+
+                    </h:panelGrid>  
+
+                    <pou:commandButton value="Submit" action="#{airBookBean.submit}" id="submitButton" onclick="#{submitBean.save()}" immediate="true"/>  
+
+                </pou:panel>  
+            </pou:tab>  
+
+        </pou:wizard>  
+
+    </ui:define>
+
+</ui:composition>
+
+

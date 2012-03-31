@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="templates/web.xhtml"                
+                xmlns:pou="http://primefaces.org/ui">
+
+    <ui:define name="form-title-text">
+        Select Flights
+    </ui:define>
+
+    <ui:define name="form-menu-area"/>
+    <ui:define name="form-instruction-text"/>
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{airSearchResultsBean.onPreRenderView}"/>
+    </f:metadata>
+
+    <ui:define name="form-content">
+
+
+        <h:panelGrid columns="1" style="margin-left: 10px; margin-bottom:10px;" cellpadding="0" >
+
+            <pou:button outcome="/AirSearch.jsf"  value="Search Again" style="width: 120px" />
+
+            <pou:carousel id="airSearchResultsDeparture" value="#{airSearchResultsBean.departingFlights}" itemStyle="carouselItem"
+                          var="item" itemStyleClass="searchResult" headerText="Flights from #{airSearchResultsBean.departureAirportCode}">  
+                <pou:column>  
+                    <pou:graphicImage id="image" value="/images/air/#{item.airlineCode}.gif"/>   
+                    <h:outputText  value="#{item.airline}" />
+                    <h:panelGrid columns="1" style="width:200px" cellpadding="5">  
+                        <h:outputText  value="Flight: #{item.airlineFlightNumber}" />  
+                        <h:outputText  value="Departure Time: #{item.departureTime}">       
+                            <f:convertDateTime pattern="MM-dd-yyyy HH:mm:ss z"/>
+                        </h:outputText>
+                        <h:outputText  value="Arrival Time: #{item.arrivalTime}" >          
+                            <f:convertDateTime pattern="MM-dd-yyyy HH:mm:ss z"/>
+                        </h:outputText>
+                        <h:outputText  value="Price: #{item.price}">
+                            <f:convertNumber maxFractionDigits="2"
+                                             groupingUsed="true"
+                                             currencySymbol="$"
+                                             maxIntegerDigits="7"
+                                             type="currency"/>
+                        </h:outputText>
+                        <pou:selectBooleanButton offLabel="available" onLabel="selected" value="#{item.selected}"/>                    
+                    </h:panelGrid>  
+                </pou:column>  
+            </pou:carousel>
+
+            <pou:carousel id="airSearchResultsReturn" value="#{airSearchResultsBean.returningFlights}" 
+                          var="item" itemStyleClass="searchResult" headerText="Flights from #{airSearchResultsBean.arrivalAirportCode}">  
+                <pou:column>  
+                    <pou:graphicImage id="image" value="/images/air/#{item.airlineCode}.gif"/>   
+                    <h:outputText  value="#{item.airline}" />
+                    <h:panelGrid columns="1" style="width:200px" cellpadding="5">  
+                        <h:outputText  value="Flight: #{item.airlineFlightNumber}" />  
+                        <h:outputText  value="Departure Time: #{item.departureTime}">           
+                            <f:convertDateTime pattern="MM-dd-yyyy HH:mm:ss z"/>
+                        </h:outputText>
+                        <h:outputText  value="Arrival Time: #{item.arrivalTime}" >                     
+                            <f:convertDateTime pattern="MM-dd-yyyy HH:mm:ss z"/>
+                        </h:outputText>
+                        <h:outputText  value="Price: #{item.price}">
+                            <f:convertNumber maxFractionDigits="2"
+                                             groupingUsed="true"
+                                             currencySymbol="$"
+                                             maxIntegerDigits="7"
+                                             type="currency"/>
+                        </h:outputText>
+                        <pou:selectBooleanButton offLabel="available" onLabel="selected" value="#{item.selected}"/>     
+                    </h:panelGrid>  
+                </pou:column>  
+            </pou:carousel>
+
+            <pou:commandButton value="Book" action="#{airSearchResultsBean.submit}" style="width: 120px" />
+        </h:panelGrid>
+
+    </ui:define>
+
+</ui:composition>
+
+

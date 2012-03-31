@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+    
+    <!-- declare a com.mongodb.Mongo object Default bean name is 'mongo' -->    
+    <mongo:mongo host="127.0.0.1" port="27017" />
+    
+    <!-- create a SimpleMongoDbFactory, mongo-ref references above mongo -->  
+    <mongo:db-factory host="127.0.0.1" dbname="springeetravel" mongo-ref="mongo"/>
+    <!-- create a MongoTemplate -->  
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+    
+    <mongo:repositories base-package="com.springeetravel.dataaccess"/>
+    
+</beans>

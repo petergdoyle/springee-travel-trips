@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="templates/web.xhtml"                
+                xmlns:pou="http://primefaces.org/ui">
+    
+    <ui:define name="form-title-text">
+        Search Flights
+    </ui:define>
+
+    <ui:define name="form-menu-area"/>
+    <ui:define name="form-instruction-text">Know when you want to fly? Enter your dates for the best airfare deals to your destination.</ui:define>
+
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{airSearchBean.onPreRenderView}"/>
+    </f:metadata>
+
+    <ui:define name="form-content">
+
+        <h:panelGrid columns="1" style="margin-left: 10px; margin-bottom:10px; width: 500px; border: 1px solid lightgray" cellpadding="0" >
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputText value="Ticket Type: " />   
+                <pou:selectOneRadio value="#{airSearchBean.ticketType}" >  
+                    <f:selectItems value="#{airSearchBean.selectableTicketTypes}" var="item" itemValue="#{item}" itemLabel="#{item}" />      
+                </pou:selectOneRadio>  
+                <h:outputText value="Class: " style="padding-left: 70px" />   
+                <pou:selectOneMenu value="#{airSearchBean.classType}" >    
+                    <f:selectItems value="#{airSearchBean.selectableClassTypes}" var="item" itemValue="#{item}" itemLabel="#{item}" />      
+                </pou:selectOneMenu>  
+            </h:panelGrid>
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputText   value="From" />  
+                <pou:autoComplete  id="departureAirportCode"  value="#{airSearchBean.departureAirportCode}" required="true" 
+                                     completeMethod="#{airSearchBean.completeAirportCode}" size="23" 
+                                     var="item" itemLabel="#{item.description}" itemValue="#{item.code}"  forceSelection="true"/>  
+                <h:outputText   value="To" style="padding-left: 5px" />                   
+                <pou:autoComplete  id="arrivalAirportCode"  value="#{airSearchBean.arrivalAirportCode}" required="true"
+                                     completeMethod="#{airSearchBean.completeAirportCode}"  size="23" 
+                                     var="item" itemLabel="#{item.description}" itemValue="#{item.code}"  forceSelection="true"/>  
+            </h:panelGrid>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:panelGrid columns="1" cellpadding="5">
+                    <h:panelGroup>
+                        <h:outputText value="Depart:  " /><h:outputText value="#{airSearchBean.departureDate}"><f:convertDateTime pattern="MM-dd-yyyy"/></h:outputText> 
+                    </h:panelGroup>
+                    <pou:calendar value="#{airSearchBean.departureDate}" mode="inline"  disabled="false"/>  
+                </h:panelGrid>  
+                <h:panelGrid columns="1" cellpadding="5">
+                    <h:panelGroup>
+                        <h:outputText value="Return:  " /><h:outputText id="returnDateText" value="#{airSearchBean.returnDate}"><f:convertDateTime pattern="MM-dd-yyyy"/></h:outputText> 
+                    </h:panelGroup>
+                    <pou:calendar  value="#{airSearchBean.returnDate}" mode="inline"  disabled="false">  
+                        <f:ajax execute="@all" render="returnDateText" />
+                    </pou:calendar>
+                </h:panelGrid>  
+            </h:panelGrid>
+            <h:panelGrid columns="4" cellpadding="5">
+                <h:outputText value="Adults: " />  
+                <pou:spinner value="#{airSearchBean.adultSeats}" min="1" max="8"  size="2" />  
+                <h:outputText value="Children: " />  
+                <pou:spinner value="#{airSearchBean.childSeats}" min="0" max="8"  size="2" />  
+            </h:panelGrid>  
+            <h:panelGrid columns="1" cellpadding="5" style="padding-left: 380px" >
+                <pou:commandButton value="submit" action="#{airSearchBean.submit}" />
+            </h:panelGrid>
+        </h:panelGrid>  
+    </ui:define>
+</ui:composition>
+
+

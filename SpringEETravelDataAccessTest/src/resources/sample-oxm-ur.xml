@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.springeetravel.domain.UniversalRecord>
+    <airSegmentList>
+        <com.springeetravel.domain.AirSegment>
+            <createDate>2012-03-27 18:52:03.775 UTC</createDate>
+            <flightDetail>
+                <departureAirportCode>JFK</departureAirportCode>
+                <departureTime>2012-03-27 18:52:03.758 UTC</departureTime>
+                <arrivalAirportCode>DEN</arrivalAirportCode>
+                <arrivalTime reference="../departureTime"/>
+                <airline>American Airlines</airline>
+                <airlineCode>AA</airlineCode>
+                <airlineFlightNumber>AA4829</airlineFlightNumber>
+                <classOfService>Economy</classOfService>
+                <price>220.0</price>
+                <airSegmentId reference="../.."/>
+            </flightDetail>
+            <formOfPaymentList class="java.util.Arrays$ArrayList">
+                <a class="com.springeetravel.domain.FormOfPayment-array">
+                    <com.springeetravel.domain.FormOfPayment>
+                        <formOfPaymentType>CC</formOfPaymentType>
+                        <creditCardNumber>2921 1929 1281 3282</creditCardNumber>
+                        <creditCardName>Visa</creditCardName>
+                        <creditExpiry>02/13</creditExpiry>
+                        <creditCcid>320</creditCcid>
+                        <airSegmentId reference="../../../.."/>
+                    </com.springeetravel.domain.FormOfPayment>
+                </a>
+            </formOfPaymentList>
+            <passengerDetailList class="java.util.Arrays$ArrayList">
+                <a class="com.springeetravel.domain.PassengerDetail-array">
+                    <com.springeetravel.domain.PassengerDetail>
+                        <firstName>David</firstName>
+                        <lastName>Jones</lastName>
+                        <initials>M. H.</initials>
+                        <contactPhone>303 764 2311</contactPhone>
+                        <contactEmail>djones@home.com</contactEmail>
+                        <countryOfResidenceCode>CAN</countryOfResidenceCode>
+                        <countryOfNationalityCode>CAN</countryOfNationalityCode>
+                        <passportId>A1001229</passportId>
+                        <airSegmentId reference="../../../.."/>
+                    </com.springeetravel.domain.PassengerDetail>
+                </a>
+            </passengerDetailList>
+        </com.springeetravel.domain.AirSegment>
+        <com.springeetravel.domain.AirSegment>
+            <createDate reference="../../com.springeetravel.domain.AirSegment/createDate"/>
+            <flightDetail>
+                <departureAirportCode>DEN</departureAirportCode>
+                <departureTime reference="../../../com.springeetravel.domain.AirSegment/flightDetail/departureTime"/>
+                <arrivalAirportCode>JFK</arrivalAirportCode>
+                <arrivalTime reference="../../../com.springeetravel.domain.AirSegment/flightDetail/departureTime"/>
+                <airline>American Airlines</airline>
+                <airlineCode>AA</airlineCode>
+                <airlineFlightNumber>AA4829</airlineFlightNumber>
+                <classOfService>Economy</classOfService>
+                <price>220.0</price>
+                <airSegmentId reference="../.."/>
+            </flightDetail>
+            <formOfPaymentList class="java.util.Arrays$ArrayList">
+                <a class="com.springeetravel.domain.FormOfPayment-array">
+                    <com.springeetravel.domain.FormOfPayment>
+                        <formOfPaymentType>CC</formOfPaymentType>
+                        <creditCardNumber>2921 1929 1281 3282</creditCardNumber>
+                        <creditCardName>Visa</creditCardName>
+                        <creditExpiry>02/13</creditExpiry>
+                        <creditCcid>320</creditCcid>
+                        <airSegmentId reference="../../../.."/>
+                    </com.springeetravel.domain.FormOfPayment>
+                </a>
+            </formOfPaymentList>
+            <passengerDetailList class="java.util.Arrays$ArrayList">
+                <a class="com.springeetravel.domain.PassengerDetail-array">
+                    <com.springeetravel.domain.PassengerDetail>
+                        <firstName>David</firstName>
+                        <lastName>Jones</lastName>
+                        <initials>M. H.</initials>
+                        <contactPhone>303 764 2311</contactPhone>
+                        <contactEmail>djones@home.com</contactEmail>
+                        <countryOfResidenceCode>CAN</countryOfResidenceCode>
+                        <countryOfNationalityCode>CAN</countryOfNationalityCode>
+                        <passportId>A1001229</passportId>
+                        <airSegmentId reference="../../../.."/>
+                    </com.springeetravel.domain.PassengerDetail>
+                </a>
+            </passengerDetailList>
+        </com.springeetravel.domain.AirSegment>
+    </airSegmentList>
+</com.springeetravel.domain.UniversalRecord>

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"   
+      xmlns:pou="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta http-equiv="X-UA-Compatible" content="EmulateIE8" />
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>
+                    <ui:insert name="title-text">
+                        #{bundle.textPageBanner}
+                    </ui:insert>
+                </title>
+            </f:facet>
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/default.css" />
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/syntaxhighlighter/syntaxhighlighter.css" />
+            <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css' /> 
+            <style type="text/css">
+                #page {
+                    position: relative;
+                }
+                div.center {
+                    margin-left: auto; margin-right: auto;
+                }
+            </style>
+            <ui:insert name="head" />
+        </h:head>
+
+        <h:body>
+            <div id="page">          
+
+                <ui:insert name="page-banner">
+                    <ui:insert name="form-menu-area">insert menu here</ui:insert>
+                </ui:insert>
+
+                <ui:insert name="page-content">
+
+                    <ui:insert name="page-title">
+                        <div style="padding-top : 20px; padding-left: 20px; padding-right: 0px;">
+                            <h1 class="title ui-widget-header ui-corner-all" style="background-image:url('images/springee.jpg'); opacity:0.4; height: 100px"/>                        
+                        </div>
+                    </ui:insert>
+
+                    <h:form prependId="false" >
+
+                    <pou:ajaxStatus style="position: relative; padding-left: 20px; width:16px;height:16px; margin-bottom:10px;" id="ajaxStatusPanel">  
+                        <f:facet name="start">  
+                            <h:graphicImage width="32" height="32" style="padding-left: 20px;" value="/design/ajaxloading.gif" />
+                        </f:facet>  
+                        <f:facet name="complete">  
+                            <h:outputText value="" />  
+                        </f:facet>  
+                    </pou:ajaxStatus> 
+
+
+                        <div style="padding-top: 10px; position: relative;">
+
+                            <ui:insert name="form-menu-area">
+                                insert form-menu-area here
+                            </ui:insert>
+
+                            <ui:insert name="form-title">
+                                <div style="margin-left: 40px; margin-right: 10px; text-align: justify;">
+                                    <h1>
+                                        <ui:insert name="page-title-text">#{bundle.textPageTitle}</ui:insert>
+                                    </h1>                        
+                                    <h2>
+                                        <ui:insert name="form-title-text">insert form-title here</ui:insert>
+                                    </h2>
+                                </div>                    
+                            </ui:insert>
+
+                            <ui:insert name="form-instruction-area">
+                                <div style="margin-left: 40px; margin-right: 10px; text-align: justify;">
+                                    <ui:insert name="form-instruction-text">insert form-instructions-text here</ui:insert>
+                                </div>                    
+                            </ui:insert>
+
+                            <ui:insert name="form-content-area">
+                                <div style="padding-top: 40px;  margin-left: 30px;">
+                                    <ui:insert name="form-content">insert form-content here</ui:insert>
+                                </div>
+                            </ui:insert>
+
+                        </div>
+
+                    </h:form>
+                </ui:insert>
+            </div>
+        </h:body>
+    </f:view>
+
+</html>
+
