@@ -2,6 +2,8 @@
  */
 package com.springeetravel.domain;
 
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,10 +11,11 @@ import java.util.Date;
  *
  * @author peter
  */
+@Entity
 public class PassengerDetail implements Serializable {
 
-    private static final long serialVersionUID = -4886433855009176095L;
-    private Long id;
+    @Id
+    private String id;
     private String firstName;
     private String lastName;
     private String initials;
@@ -28,10 +31,6 @@ public class PassengerDetail implements Serializable {
     public PassengerDetail() {
     }
 
-    public PassengerDetail(Long id) {
-        this.id = id;
-    }
-
     public PassengerDetail(String firstName, String lastName, String initials, String contactPhone, String contactEmail, String countryOfResidenceCode, String countryOfNationalityCode, String passportId, Date dateOfBirth, Boolean valuedCustomer) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,11 +44,11 @@ public class PassengerDetail implements Serializable {
         this.valuedCustomer = valuedCustomer;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -142,23 +141,25 @@ public class PassengerDetail implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PassengerDetail)) {
+    public boolean equals(Object obj) {
+        if (obj == null) {
             return false;
         }
-        PassengerDetail other = (PassengerDetail) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PassengerDetail other = (PassengerDetail) obj;
+        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
     }
 
     @Override

@@ -16,6 +16,11 @@
             <name>Mysema Source</name>
             <url>http://source.mysema.com/maven2/releases</url>
         </repository>    
+        <repository>
+            <id>morphia</id>
+            <name>Google Morphia</name>
+            <url>http://morphia.googlecode.com/svn/mavenrepo/</url>
+        </repository>
     </repositories>
     
     <build>
