@@ -5,14 +5,14 @@ package com.springeetravel.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
  *
  * @author peter
- */@Entity
+ */
+@Entity
 public class UniversalRecord implements Serializable {
 
     private static final long serialVersionUID = -2474789049095205331L;
@@ -61,7 +61,7 @@ public class UniversalRecord implements Serializable {
             return false;
         }
         final UniversalRecord other = (UniversalRecord) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
         return true;
@@ -70,7 +70,7 @@ public class UniversalRecord implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 

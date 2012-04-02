@@ -11,6 +11,21 @@
     <name>SpringEETravelQueryDslJpaQGenerator</name>
     <url>http://maven.apache.org</url>
     
+    <repositories>
+        
+        <repository>
+            <id>jboss</id>
+            <name>JBoss repository</name>
+            <url>http://repository.jboss.org/maven2</url>
+        </repository>
+        
+        <repository>
+            <id>eclipse</id>
+            <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
+        </repository>
+
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -61,7 +76,14 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.1</version>
-        </dependency>  
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>org.eclipse.persistence.core</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        
     </dependencies>
-  
+        
 </project>
