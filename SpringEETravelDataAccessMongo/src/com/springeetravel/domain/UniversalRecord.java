@@ -2,21 +2,20 @@
  */
 package com.springeetravel.domain;
 
+import com.google.code.morphia.annotations.Entity;
+import com.google.code.morphia.annotations.Id;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author peter
  */
-@Document
+@Entity
 public class UniversalRecord implements Serializable {
 
-    private static final long serialVersionUID = -2474789049095205331L;
+    private static final long serialVersionUID = 6434506583201369712L;
     @Id
     private String id;
     private Date createDate;
@@ -62,7 +61,7 @@ public class UniversalRecord implements Serializable {
             return false;
         }
         final UniversalRecord other = (UniversalRecord) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if ((this.id == null) ? (other.id != null) : !this.id.equals(other.id)) {
             return false;
         }
         return true;
@@ -70,8 +69,8 @@ public class UniversalRecord implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.id);
+        int hash = 3;
+        hash = 97 * hash + (this.id != null ? this.id.hashCode() : 0);
         return hash;
     }
 
