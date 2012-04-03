@@ -29,13 +29,13 @@ public class PassengerDetailRepository extends QuerydslRepositorySupport impleme
     @Override
     public List<PassengerDetail> findAllForeignPassengers(String flightNumber, Date flightDate) {
         QPassengerDetail passengerDetail = QPassengerDetail.passengerDetail;
-        return from(passengerDetail).where(passengerDetail.countryOfNationalityCode.ne(DOMESTIC_COUNTRY_CODE)).list(passengerDetail);
+        return from(passengerDetail).where(passengerDetail.countryOfNationalityCode.ne(DOMESTIC_COUNTRY_CODE)).list();
     }
 
     @Override
     public List<PassengerDetail> findSpecialCustomers(String flightNumber, Date flightDate) {
         QPassengerDetail passengerDetail = QPassengerDetail.passengerDetail;
-        return from(passengerDetail).where(hasBirthDay().and(isValuedCustomer())).list(passengerDetail);
+        return from(passengerDetail).where(hasBirthDay().and(isValuedCustomer())).list();
     }
 
     @Override
