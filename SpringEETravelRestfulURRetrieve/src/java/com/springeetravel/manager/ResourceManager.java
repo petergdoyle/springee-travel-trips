@@ -21,6 +21,6 @@ public class ResourceManager {
     private UniversalRecordDao dao;
 
     public UniversalRecord retrieveUniversalRecord(String id) {
-        return dao.find(id);
+        return dao.findByLocatorCode(id);
     }
 }

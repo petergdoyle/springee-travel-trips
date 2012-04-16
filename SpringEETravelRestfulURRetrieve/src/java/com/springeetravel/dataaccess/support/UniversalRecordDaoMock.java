@@ -15,7 +15,22 @@ import javax.inject.Named;
 public class UniversalRecordDaoMock implements UniversalRecordDao {
 
     @Override
-    public UniversalRecord find(String locatorCode) {
+    public List<UniversalRecord> findByTicketedDate(Date fromDate, Date toDate) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<UniversalRecord> findByTicketedAgent(String agentId) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public UniversalRecord findByLocatorCode(String locatorCode) {
+        // to be replaced with dao look up code...
+        return buildMockUniversalRecord();
+    }
+
+    public UniversalRecord buildMockUniversalRecord() {
         UniversalRecord ur = new UniversalRecord();
         Calendar cal = Calendar.getInstance();
         Date time = cal.getTime();

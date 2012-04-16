@@ -3,14 +3,20 @@
 package com.springeetravel.dataaccess;
 
 import com.springeetravel.domain.UniversalRecord;
+import java.util.Date;
+import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author peter
  */
+@Transactional(readOnly = true)
 public interface UniversalRecordDao {
 
-    @Transactional(readOnly = true)
-    UniversalRecord find(String locatorCode);
+    UniversalRecord findByLocatorCode(String locatorCode);
+
+    List<UniversalRecord> findByTicketedDate(Date fromDate, Date toDate);
+
+    List<UniversalRecord> findByTicketedAgent(String agentId);
 }
