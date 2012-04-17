@@ -13,11 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
  * @author peter
  */
 @Transactional(readOnly = true)
-@Named
-public class ResourceManager {
+@Named("universalRecordResourceManager")
+public class UniversalRecordResourceManager {
 
     @Inject
-    @Named
+    @Named("universalRecordDao")
     private UniversalRecordDao dao;
 
     public UniversalRecord retrieveUniversalRecord(String id) {

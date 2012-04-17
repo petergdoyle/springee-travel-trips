@@ -6,14 +6,14 @@
          version="3.0">
              
     <servlet>
-        <servlet-name>ur</servlet-name>
+        <servlet-name>rest</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
  
     <servlet-mapping>
-        <servlet-name>ur</servlet-name>
-        <url-pattern>/ur/*</url-pattern>
+        <servlet-name>rest</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     
     <session-config>

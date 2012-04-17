@@ -2,11 +2,11 @@
  */
 package com.springeetravel.domain;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 /**
@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "AIR_SEGMENTS")
-@XmlRootElement
+@XStreamAlias("AirSegment")
 @NamedQueries({
     @NamedQuery(name = "AirSegment.findAll", query = "SELECT a FROM AirSegment a"),
     @NamedQuery(name = "AirSegment.findById", query = "SELECT a FROM AirSegment a WHERE a.id = :id"),

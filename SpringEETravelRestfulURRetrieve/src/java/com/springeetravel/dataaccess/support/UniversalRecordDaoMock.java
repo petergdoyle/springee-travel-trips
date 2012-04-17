@@ -32,6 +32,8 @@ public class UniversalRecordDaoMock implements UniversalRecordDao {
 
     public UniversalRecord buildMockUniversalRecord() {
         UniversalRecord ur = new UniversalRecord();
+        ur.setId("12000");
+        
         Calendar cal = Calendar.getInstance();
         Date time = cal.getTime();
         String departureAirportCode = "JFK";

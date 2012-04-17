@@ -2,9 +2,9 @@
  */
 package com.springeetravel.domain;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "FORM_OF_PAYMENTS")
-@XmlRootElement
+@XStreamAlias("FormOfPayment")
 @NamedQueries({
     @NamedQuery(name = "FormOfPayment.findAll", query = "SELECT f FROM FormOfPayment f"),
     @NamedQuery(name = "FormOfPayment.findById", query = "SELECT f FROM FormOfPayment f WHERE f.id = :id"),

@@ -2,10 +2,10 @@
  */
 package com.springeetravel.domain;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "AVAILABLE_FLIGHTS")
-@XmlRootElement
+@XStreamAlias("AvailableFlight")
 @NamedQueries({
     @NamedQuery(name = "AvailableFlight.findAll", query = "SELECT a FROM AvailableFlight a"),
     @NamedQuery(name = "AvailableFlight.findById", query = "SELECT a FROM AvailableFlight a WHERE a.id = :id"),
