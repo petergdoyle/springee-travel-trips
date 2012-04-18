@@ -2,40 +2,42 @@
  */
 package com.springeetravel.manager;
 
-import com.springeetravel.dataaccess.UniversalRecordService;
+import com.springeetravel.dataaccess.UniversalRecordRetrieveService;
 import com.springeetravel.domain.UniversalRecord;
 import java.util.Date;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import javax.inject.Inject;
+import javax.inject.Named;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author peter
  */
-@Service
-public class UniversalRecordsServiceManager {
+@Transactional(readOnly = true)
+@Named
+public class UniversalRecordsRetrieveServiceManager {
 
-    @Autowired
-    private UniversalRecordService dao;
+    @Inject
+    private UniversalRecordRetrieveService service;
 
     public UniversalRecord retrieveUniversalRecordByLocatorCode(String locatorCode) {
-        return dao.findByLocatorCode(locatorCode);
+        return service.findByLocatorCode(locatorCode);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByBookingPassengerName(String passengerName) {
-        return dao.findByBookingPassengerName(passengerName);
+        return service.findByBookingPassengerName(passengerName);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByAirTicketedDate(Date fromDate, Date toDate) {
-        return dao.findByAirTicketedDate(fromDate, toDate);
+        return service.findByAirTicketedDate(fromDate, toDate);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByAgent(String agentId) {
-        return dao.findByAgent(agentId);
+        return service.findByAgent(agentId);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByAgency(String agencyId) {
-        return dao.findByAgency(agencyId);
+        return service.findByAgency(agencyId);
     }
 }

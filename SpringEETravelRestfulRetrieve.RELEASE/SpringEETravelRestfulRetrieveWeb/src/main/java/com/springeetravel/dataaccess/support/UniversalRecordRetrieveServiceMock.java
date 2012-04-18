@@ -2,26 +2,29 @@
  */
 package com.springeetravel.dataaccess.support;
 
-import com.springeetravel.dataaccess.UniversalRecordService;
+import com.springeetravel.dataaccess.UniversalRecordRetrieveService;
 import com.springeetravel.domain.*;
 import java.util.*;
-import org.springframework.stereotype.Service;
+import javax.inject.Named;
 
 /**
  *
  * @author peter
  */
-@Service
-public class UniversalRecordServiceMock implements UniversalRecordService {
+@Named
+public class UniversalRecordRetrieveServiceMock implements UniversalRecordRetrieveService {
 
+    @Override
     public List<UniversalRecord> findByAirTicketedDate(Date fromDate, Date toDate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public List<UniversalRecord> findByAgent(String agentId) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public List<UniversalRecord> findByAgency(String agencyId) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -74,6 +74,17 @@
             <artifactId>spring-restful-ur-retrieval-model</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>3.1.1.RELEASE</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

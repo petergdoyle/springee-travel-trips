@@ -5,12 +5,14 @@ package com.springeetravel.dataaccess;
 import com.springeetravel.domain.UniversalRecord;
 import java.util.Date;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author peter
  */
-public interface UniversalRecordService {
+@Transactional(readOnly = true)
+public interface UniversalRecordRetrieveService {
 
     UniversalRecord findByLocatorCode(String locatorCode);
 
