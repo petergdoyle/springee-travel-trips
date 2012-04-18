@@ -2,7 +2,7 @@
  */
 package com.springeetravel.manager;
 
-import com.springeetravel.dataaccess.UniversalRecordRetrieveService;
+import com.springeetravel.dataaccess.UniversalRecordRetrieveDAO;
 import com.springeetravel.domain.UniversalRecord;
 import java.util.Date;
 import java.util.List;
@@ -16,28 +16,28 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional(readOnly = true)
 @Named
-public class UniversalRecordsRetrieveServiceManager {
+public class UniversalRecordsRetrieveService {
 
     @Inject
-    private UniversalRecordRetrieveService service;
+    private UniversalRecordRetrieveDAO dao;
 
     public UniversalRecord retrieveUniversalRecordByLocatorCode(String locatorCode) {
-        return service.findByLocatorCode(locatorCode);
+        return dao.findByLocatorCode(locatorCode);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByBookingPassengerName(String passengerName) {
-        return service.findByBookingPassengerName(passengerName);
+        return dao.findByBookingPassengerName(passengerName);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByAirTicketedDate(Date fromDate, Date toDate) {
-        return service.findByAirTicketedDate(fromDate, toDate);
+        return dao.findByAirTicketedDate(fromDate, toDate);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByAgent(String agentId) {
-        return service.findByAgent(agentId);
+        return dao.findByAgent(agentId);
     }
 
     public List<UniversalRecord> retrieveUniversalRecordByAgency(String agencyId) {
-        return service.findByAgency(agencyId);
+        return dao.findByAgency(agencyId);
     }
 }

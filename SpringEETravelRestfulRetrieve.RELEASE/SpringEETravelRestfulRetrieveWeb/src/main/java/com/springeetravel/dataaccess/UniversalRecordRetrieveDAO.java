@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author peter
  */
 @Transactional(readOnly = true)
-public interface UniversalRecordRetrieveService {
+public interface UniversalRecordRetrieveDAO {
 
     UniversalRecord findByLocatorCode(String locatorCode);
 

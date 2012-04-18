@@ -2,7 +2,7 @@
  */
 package com.springeetravel.dataaccess.support;
 
-import com.springeetravel.dataaccess.UniversalRecordRetrieveService;
+import com.springeetravel.dataaccess.UniversalRecordRetrieveDAO;
 import com.springeetravel.domain.*;
 import java.util.*;
 import javax.inject.Named;
@@ -12,7 +12,7 @@ import javax.inject.Named;
  * @author peter
  */
 @Named
-public class UniversalRecordRetrieveServiceMock implements UniversalRecordRetrieveService {
+public class UniversalRecordRetrieveDAOMock implements UniversalRecordRetrieveDAO {
 
     @Override
     public List<UniversalRecord> findByAirTicketedDate(Date fromDate, Date toDate) {
