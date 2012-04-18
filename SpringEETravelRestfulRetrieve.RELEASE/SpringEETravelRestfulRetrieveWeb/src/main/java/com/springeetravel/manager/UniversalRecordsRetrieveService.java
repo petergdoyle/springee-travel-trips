@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UniversalRecordsRetrieveService {
 
     @Inject
+    @Named("universalRecordRetrieveDAOMock")
     private UniversalRecordRetrieveDAO dao;
 
     public UniversalRecord retrieveUniversalRecordByLocatorCode(String locatorCode) {

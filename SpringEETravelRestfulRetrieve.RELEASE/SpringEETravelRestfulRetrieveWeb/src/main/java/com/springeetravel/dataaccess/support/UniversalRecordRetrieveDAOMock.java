@@ -11,7 +11,7 @@ import javax.inject.Named;
  *
  * @author peter
  */
-@Named
+@Named("universalRecordRetrieveDAOMock")
 public class UniversalRecordRetrieveDAOMock implements UniversalRecordRetrieveDAO {
 
     @Override
