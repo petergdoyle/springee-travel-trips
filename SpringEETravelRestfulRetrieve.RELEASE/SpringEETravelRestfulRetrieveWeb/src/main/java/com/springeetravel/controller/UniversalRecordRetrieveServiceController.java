@@ -7,6 +7,8 @@ import com.springeetravel.domain.UniversalRecord;
 import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
@@ -41,7 +43,7 @@ public class UniversalRecordRetrieveServiceController {
     }
 
     @RequestMapping(value = "/ticketedDateFrom/{fromDate}/ticketedDateTo/{fromDate}", method = RequestMethod.GET)
-    public ModelAndView getUniversalRecordByAirTicketedDate(Date fromDate, Date toDate) {
+    public ModelAndView getUniversalRecordByAirTicketedDate(@DateTimeFormat(iso = ISO.DATE) Date fromDate, @DateTimeFormat(iso = ISO.DATE) Date toDate) {
         List<UniversalRecord> urs = service.findByAirTicketedDate(fromDate, toDate);
         return new ModelAndView(UNIVERSAL_RECORD_XML_VIEW, BindingResult.MODEL_KEY_PREFIX + "UniversalRecord", urs);
     }
