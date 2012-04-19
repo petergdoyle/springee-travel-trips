@@ -3,12 +3,51 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
-            http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd">
+            http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+            http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd"  
+       default-autowire="byName">
 
+    <!-- Use @Component annotations for bean definitions -->
     <context:component-scan base-package="com.springeetravel" />
+      <!-- Use @Controller annotations for MVC controller definitions -->
+    <mvc:annotation-driven />
     
+    
+    <!-- Embedded database configuration -->
+    <jdbc:embedded-database id="dataSource" type="HSQL">
+        <jdbc:script location="classpath:/universal-record-schema.sql"/> 
+        <jdbc:script location="classpath:/available-flights-data.sql"/>       
+        <jdbc:script location="classpath:/universal-record-data.sql"/>     
+    </jdbc:embedded-database>
+
+    
+    
+    <!-- JPA configuration -->
+    <bean id="transactionManager"  
+          class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+    
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/> 
+    
+    <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+    
+    
+    <!-- RESTful Spring MVC configuration -->
     <bean
         class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"
         p:order="1">
@@ -42,4 +81,6 @@
             </bean>
         </constructor-arg>
     </bean>
+    
+    
 </beans>

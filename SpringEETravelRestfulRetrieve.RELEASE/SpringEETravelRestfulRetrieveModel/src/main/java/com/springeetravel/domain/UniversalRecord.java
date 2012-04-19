@@ -25,9 +25,10 @@ public class UniversalRecord implements Serializable {
 
     private static final long serialVersionUID = -6895084357843205386L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID")
-    private String id;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "CREATE_DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -39,11 +40,11 @@ public class UniversalRecord implements Serializable {
         airSegmentList = new ArrayList<AirSegment>();
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
