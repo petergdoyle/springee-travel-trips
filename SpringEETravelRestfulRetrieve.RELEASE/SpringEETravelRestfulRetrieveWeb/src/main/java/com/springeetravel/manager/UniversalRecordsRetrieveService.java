@@ -30,6 +30,9 @@ public class UniversalRecordsRetrieveService {
 
     public UniversalRecord retrieveUniversalRecordByLocatorCode(String locatorCode) {
         UniversalRecord ur = dao.findByLocatorCode(locatorCode);
+        if (ur == null) {
+            return null;
+        }
         UniversalRecord copy = copy(ur);
         return copy;
     }
