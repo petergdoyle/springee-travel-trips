@@ -23,9 +23,9 @@
     
     <!-- Embedded database configuration -->
     <jdbc:embedded-database id="dataSource" type="HSQL">
-        <jdbc:script location="classpath:/universal-record-schema.sql"/> 
-        <jdbc:script location="classpath:/available-flights-data.sql"/>       
-        <jdbc:script location="classpath:/universal-record-data.sql"/>     
+        <jdbc:script location="classpath:resources/universal-record-schema.sql"/> 
+        <jdbc:script location="classpath:resources/available-flights-data.sql"/>       
+        <jdbc:script location="classpath:resources/universal-record-data.sql"/>     
     </jdbc:embedded-database>
 
     

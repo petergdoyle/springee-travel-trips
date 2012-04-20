@@ -3,7 +3,7 @@
 package com.springeetravel.controller;
 
 import com.springeetravel.domain.UniversalRecord;
-import com.springeetravel.manager.UniversalRecordsRetrieveService;
+import com.springeetravel.manager.UniversalRecordRetrieveService;
 import java.util.Date;
 import java.util.List;
 import javax.inject.Inject;
@@ -31,7 +31,7 @@ public class UniversalRecordRetrieveServiceController {
 
     public static final String UNIVERSAL_RECORD_XML_VIEW = "universalRecordXmlView";
     @Inject
-    private UniversalRecordsRetrieveService service;
+    private UniversalRecordRetrieveService service;
 
     @RequestMapping(value = "/locatorCode/{locatorCode}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByLocatorCode(@PathVariable String locatorCode) {
