@@ -37,57 +37,32 @@ public class UniversalRecordRetrieveServiceController {
 
     @RequestMapping(value = "/locatorCode/{locatorCode}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByLocatorCode(@PathVariable String locatorCode) {
-        try {
-            UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
-            return buildModelAndView(ur);
-        } catch (Exception ex) {
-            log(Level.SEVERE, ex);
-            throw new InternalServerErrorException();
-        }
+        UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
+        return buildModelAndView(ur);
     }
 
     @RequestMapping(value = "/passengerName/{passengerName}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByBookingPassengerName(String passengerName) {
-        try {
-            List<UniversalRecord> urs = service.retrieveUniversalRecordByBookingPassengerName(passengerName);
-            return buildModelAndView(urs);
-        } catch (Exception ex) {
-            log(Level.SEVERE, ex);
-            throw new InternalServerErrorException();
-        }
+        List<UniversalRecord> urs = service.retrieveUniversalRecordByBookingPassengerName(passengerName);
+        return buildModelAndView(urs);
     }
 
     @RequestMapping(value = "/ticketedDateFrom/{fromDate}/ticketedDateTo/{fromDate}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAirTicketedDate(@DateTimeFormat(iso = ISO.DATE) Date fromDate, @DateTimeFormat(iso = ISO.DATE) Date toDate) {
-        try {
-            List<UniversalRecord> urs = service.retrieveUniversalRecordByAirTicketedDate(fromDate, toDate);
-            return buildModelAndView(urs);
-        } catch (Exception ex) {
-            log(Level.SEVERE, ex);
-            throw new InternalServerErrorException();
-        }
+        List<UniversalRecord> urs = service.retrieveUniversalRecordByAirTicketedDate(fromDate, toDate);
+        return buildModelAndView(urs);
     }
 
     @RequestMapping(value = "/agentId/{agentId}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAgent(String agentId) {
-        try {
-            List<UniversalRecord> urs = service.retrieveUniversalRecordByAgent(agentId);
-            return buildModelAndView(urs);
-        } catch (Exception ex) {
-            log(Level.SEVERE, ex);
-            throw new InternalServerErrorException();
-        }
+        List<UniversalRecord> urs = service.retrieveUniversalRecordByAgent(agentId);
+        return buildModelAndView(urs);
     }
 
     @RequestMapping(value = "/agencyId/{agencyId}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAgency(String agencyId) {
-        try {
-            List<UniversalRecord> urs = service.retrieveUniversalRecordByAgency(agencyId);
-            return buildModelAndView(urs);
-        } catch (Exception ex) {
-            log(Level.SEVERE, ex);
-            throw new InternalServerErrorException();
-        }
+        List<UniversalRecord> urs = service.retrieveUniversalRecordByAgency(agencyId);
+        return buildModelAndView(urs);
     }
 
     private ModelAndView buildModelAndView(Object responseObject) {
