@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional(readOnly = true)
 @Named
-public class UniversalRecordsRetrieveService {
+public class UniversalRecordRetrieveService {
 
     @Inject
     @Named("universalRecordRetrieveDAOJPA")
