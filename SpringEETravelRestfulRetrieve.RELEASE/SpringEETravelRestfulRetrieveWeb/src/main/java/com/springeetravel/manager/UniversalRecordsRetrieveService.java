@@ -3,9 +3,6 @@
 package com.springeetravel.manager;
 
 import com.springeetravel.dataaccess.UniversalRecordRetrieveDAO;
-import com.springeetravel.domain.AirSegment;
-import com.springeetravel.domain.FormOfPayment;
-import com.springeetravel.domain.PassengerDetail;
 import com.springeetravel.domain.UniversalRecord;
 import java.util.Date;
 import java.util.List;

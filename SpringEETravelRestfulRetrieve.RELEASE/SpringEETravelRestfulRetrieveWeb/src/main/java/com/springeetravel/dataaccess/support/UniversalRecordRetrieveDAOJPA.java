@@ -23,28 +23,33 @@ public class UniversalRecordRetrieveDAOJPA implements UniversalRecordRetrieveDAO
     @PersistenceContext
     private EntityManager em;
 
+    @Override
     public UniversalRecord findByLocatorCode(String locatorCode) {
         Long id = null;
         try {
             id = Long.parseLong(locatorCode);
         } catch (NumberFormatException nfe) {
-            throw new RuntimeException("cannot parse number. found" + locatorCode);
+            throw new DataAccessException("cannot parse number. found" + locatorCode);
         }
         return find(id);
     }
 
+    @Override
     public List<UniversalRecord> findByAirTicketedDate(Date fromDate, Date toDate) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public List<UniversalRecord> findByAgent(String agentId) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public List<UniversalRecord> findByAgency(String agencyId) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public List<UniversalRecord> findByBookingPassengerName(String passengerName) {
         throw new UnsupportedOperationException("Not supported yet.");
     }

@@ -2,9 +2,12 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="SpringEETripsPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.springeetravel.domain.UniversalRecordObject</class>
-    <class>com.springeetravel.domain.UniversalRecordXml</class>
+    <class>com.springeetravel.domain.AirSegment</class>
     <class>com.springeetravel.domain.AvailableFlight</class>
+    <class>com.springeetravel.domain.FlightDetail</class>
+    <class>com.springeetravel.domain.FormOfPayment</class>
+    <class>com.springeetravel.domain.PassengerDetail</class>
+    <class>com.springeetravel.domain.UniversalRecord</class>
     <properties>
       <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
       <property name="eclipselink.ddl-generation" value="none"/>
@@ -14,6 +17,9 @@
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.logging.level.sql" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
+      <!--
+      <property name="eclipselink.session.customizer" value="com.springeetravel.dataaccess.support.UUIDSequence"/>
+      -->
     </properties>
   </persistence-unit>
 </persistence>

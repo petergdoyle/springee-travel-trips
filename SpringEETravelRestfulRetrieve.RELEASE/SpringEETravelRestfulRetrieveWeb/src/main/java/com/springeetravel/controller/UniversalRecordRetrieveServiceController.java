@@ -6,6 +6,8 @@ import com.springeetravel.domain.UniversalRecord;
 import com.springeetravel.manager.UniversalRecordsRetrieveService;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -35,32 +37,57 @@ public class UniversalRecordRetrieveServiceController {
 
     @RequestMapping(value = "/locatorCode/{locatorCode}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByLocatorCode(@PathVariable String locatorCode) {
-        UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
-        return buildModelAndView(ur);
+        try {
+            UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
+            return buildModelAndView(ur);
+        } catch (Exception ex) {
+            log(Level.SEVERE, ex);
+            throw new InternalServerErrorException();
+        }
     }
 
     @RequestMapping(value = "/passengerName/{passengerName}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByBookingPassengerName(String passengerName) {
-        List<UniversalRecord> urs = service.retrieveUniversalRecordByBookingPassengerName(passengerName);
-        return buildModelAndView(urs);
+        try {
+            List<UniversalRecord> urs = service.retrieveUniversalRecordByBookingPassengerName(passengerName);
+            return buildModelAndView(urs);
+        } catch (Exception ex) {
+            log(Level.SEVERE, ex);
+            throw new InternalServerErrorException();
+        }
     }
 
     @RequestMapping(value = "/ticketedDateFrom/{fromDate}/ticketedDateTo/{fromDate}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAirTicketedDate(@DateTimeFormat(iso = ISO.DATE) Date fromDate, @DateTimeFormat(iso = ISO.DATE) Date toDate) {
-        List<UniversalRecord> urs = service.retrieveUniversalRecordByAirTicketedDate(fromDate, toDate);
-        return buildModelAndView(urs);
+        try {
+            List<UniversalRecord> urs = service.retrieveUniversalRecordByAirTicketedDate(fromDate, toDate);
+            return buildModelAndView(urs);
+        } catch (Exception ex) {
+            log(Level.SEVERE, ex);
+            throw new InternalServerErrorException();
+        }
     }
 
     @RequestMapping(value = "/agentId/{agentId}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAgent(String agentId) {
-        List<UniversalRecord> urs = service.retrieveUniversalRecordByAgent(agentId);
-        return buildModelAndView(urs);
+        try {
+            List<UniversalRecord> urs = service.retrieveUniversalRecordByAgent(agentId);
+            return buildModelAndView(urs);
+        } catch (Exception ex) {
+            log(Level.SEVERE, ex);
+            throw new InternalServerErrorException();
+        }
     }
 
     @RequestMapping(value = "/agencyId/{agencyId}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAgency(String agencyId) {
-        List<UniversalRecord> urs = service.retrieveUniversalRecordByAgency(agencyId);
-        return buildModelAndView(urs);
+        try {
+            List<UniversalRecord> urs = service.retrieveUniversalRecordByAgency(agencyId);
+            return buildModelAndView(urs);
+        } catch (Exception ex) {
+            log(Level.SEVERE, ex);
+            throw new InternalServerErrorException();
+        }
     }
 
     private ModelAndView buildModelAndView(Object responseObject) {
@@ -68,5 +95,9 @@ public class UniversalRecordRetrieveServiceController {
             throw new ResourceNotFoundException();
         }
         return new ModelAndView(UNIVERSAL_RECORD_XML_VIEW, BindingResult.MODEL_KEY_PREFIX + "UniversalRecord", responseObject);
+    }
+
+    private void log(Level level, Exception ex) {
+        Logger.getLogger(UniversalRecordRetrieveServiceController.class.getName()).log(level, null, ex);
     }
 }

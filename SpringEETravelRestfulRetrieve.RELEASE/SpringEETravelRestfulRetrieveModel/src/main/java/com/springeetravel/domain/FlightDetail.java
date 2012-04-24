@@ -28,7 +28,7 @@ import javax.persistence.*;
     @NamedQuery(name = "FlightDetail.findByPrice", query = "SELECT f FROM FlightDetail f WHERE f.price = :price")})
 public class FlightDetail implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 7539944941416040781L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "AirSegment.findByCreateDate", query = "SELECT a FROM AirSegment a WHERE a.createDate = :createDate")})
 public class AirSegment implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -6374207566491843515L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "UniversalRecord.findAll", query = "SELECT u FROM UniversalRecord u"),
     @NamedQuery(name = "UniversalRecord.findById", query = "SELECT u FROM UniversalRecord u WHERE u.id = :id"),
+    @NamedQuery(name = "UniversalRecord.findLocatorCode", query = "SELECT u FROM UniversalRecord u WHERE u.locatorCode = :locatorCode"),
     @NamedQuery(name = "UniversalRecord.findByCreateDate", query = "SELECT u FROM UniversalRecord u WHERE u.createDate = :createDate")})
 public class UniversalRecord implements Serializable {
 
@@ -29,6 +30,8 @@ public class UniversalRecord implements Serializable {
     @Basic(optional = false)
     @Column(name = "ID")
     private Long id;
+    @Column(name = "locatorCode")
+    private String locatorCode;
     @Basic(optional = false)
     @Column(name = "CREATE_DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -36,16 +39,20 @@ public class UniversalRecord implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "universalRecordId")
     private List<AirSegment> airSegmentList;
 
-    public UniversalRecord() {
-        airSegmentList = new ArrayList<AirSegment>();
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getLocatorCode() {
+        return locatorCode;
+    }
+
+    public void setLocatorCode(String locatorCode) {
+        this.locatorCode = locatorCode;
     }
 
     public Date getCreateDate() {
@@ -89,6 +96,6 @@ public class UniversalRecord implements Serializable {
 
     @Override
     public String toString() {
-        return "UniversalRecord{" + "id=" + id + ", createDate=" + createDate + ", airSegmentList=" + airSegmentList + '}';
+        return "UniversalRecord{" + "id=" + id + ", locatorCode=" + locatorCode + ", createDate=" + createDate + ", airSegmentList=" + airSegmentList + '}';
     }
 }
