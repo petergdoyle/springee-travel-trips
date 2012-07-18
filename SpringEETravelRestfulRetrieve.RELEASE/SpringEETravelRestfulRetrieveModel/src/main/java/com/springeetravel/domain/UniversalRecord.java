@@ -4,7 +4,6 @@ package com.springeetravel.domain;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.*;

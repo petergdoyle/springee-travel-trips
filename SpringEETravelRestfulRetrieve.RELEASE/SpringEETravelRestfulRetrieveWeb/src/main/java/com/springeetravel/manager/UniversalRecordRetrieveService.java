@@ -53,4 +53,8 @@ public class UniversalRecordRetrieveService {
     private UniversalRecord copy(UniversalRecord ur) {
         return mapper.map(ur, UniversalRecord.class);
     }
+
+    public List<UniversalRecord> searchUniversalRecord(UniversalRecord ur) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }

@@ -16,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -40,6 +37,12 @@ public class UniversalRecordRetrieveServiceController {
     public ModelAndView getUniversalRecordByLocatorCode(@PathVariable String locatorCode) {
         UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
         return buildModelAndView(ur);
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public @ResponseBody UniversalRecord searchUniversalRecord(@RequestBody UniversalRecord ur) {
+        service.searchUniversalRecord(ur);
+        return ur;
     }
 
     @RequestMapping(value = "/passengerName/{passengerName}", method = RequestMethod.GET)
