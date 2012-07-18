@@ -27,7 +27,7 @@
         <jdbc:script location="classpath:resources/available-flights-data.sql"/>       
         <jdbc:script location="classpath:resources/universal-record-data.sql"/>     
     </jdbc:embedded-database>
-
+    
     <!-- Server-mode database configuration
     <bean id="dataSource"
           class="org.apache.commons.dbcp.BasicDataSource"
@@ -38,7 +38,7 @@
         <property name="password" value="" />
     </bean>
     -->
-    
+
     <!-- JPA configuration -->
     <bean id="transactionManager"  
           class="org.springframework.orm.jpa.JpaTransactionManager">

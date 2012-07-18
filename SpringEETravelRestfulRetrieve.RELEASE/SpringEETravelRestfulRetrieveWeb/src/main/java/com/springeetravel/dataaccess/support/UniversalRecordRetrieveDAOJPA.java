@@ -25,13 +25,14 @@ public class UniversalRecordRetrieveDAOJPA implements UniversalRecordRetrieveDAO
 
     @Override
     public UniversalRecord findByLocatorCode(String locatorCode) {
-        Long id = null;
-        try {
-            id = Long.parseLong(locatorCode);
-        } catch (NumberFormatException nfe) {
-            throw new DataAccessException("cannot parse number. found" + locatorCode);
+        UniversalRecord match = null;
+        Query query = em.createNamedQuery("UniversalRecord.findLocatorCode");
+        query.setParameter("locatorCode", locatorCode);
+        Object singleResult = query.getSingleResult();
+        if (singleResult != null) {
+            match = (UniversalRecord) singleResult;
         }
-        return find(id);
+        return match;
     }
 
     @Override
