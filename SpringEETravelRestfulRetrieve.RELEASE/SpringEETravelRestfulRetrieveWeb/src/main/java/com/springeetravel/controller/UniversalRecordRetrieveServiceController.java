@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = "/UniversalRecord")
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class UniversalRecordRetrieveServiceController {
+public class UniversalRecordRetrieveServiceController extends AbstractRESTController {
 
     public static final String UNIVERSAL_RECORD_XML_VIEW = "universalRecordXmlView";
     @Inject
@@ -37,12 +37,6 @@ public class UniversalRecordRetrieveServiceController {
     public ModelAndView getUniversalRecordByLocatorCode(@PathVariable String locatorCode) {
         UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
         return buildModelAndView(ur);
-    }
-
-    @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public @ResponseBody UniversalRecord searchUniversalRecord(@RequestBody UniversalRecord ur) {
-        service.searchUniversalRecord(ur);
-        return ur;
     }
 
     @RequestMapping(value = "/passengerName/{passengerName}", method = RequestMethod.GET)
@@ -67,13 +61,6 @@ public class UniversalRecordRetrieveServiceController {
     public ModelAndView getUniversalRecordByAgency(String agencyId) {
         List<UniversalRecord> urs = service.retrieveUniversalRecordByAgency(agencyId);
         return buildModelAndView(urs);
-    }
-
-    private ModelAndView buildModelAndView(Object responseObject) {
-        if (responseObject == null) {
-            throw new ResourceNotFoundException();
-        }
-        return new ModelAndView(UNIVERSAL_RECORD_XML_VIEW, BindingResult.MODEL_KEY_PREFIX + "UniversalRecord", responseObject);
     }
 
     private void log(Level level, Exception ex) {

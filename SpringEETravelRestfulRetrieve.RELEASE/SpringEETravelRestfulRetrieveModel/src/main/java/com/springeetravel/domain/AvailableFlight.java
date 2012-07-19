@@ -17,6 +17,7 @@ import javax.persistence.*;
 @NamedQueries({
     @NamedQuery(name = "AvailableFlight.findAll", query = "SELECT a FROM AvailableFlight a"),
     @NamedQuery(name = "AvailableFlight.findById", query = "SELECT a FROM AvailableFlight a WHERE a.id = :id"),
+    @NamedQuery(name = "AvailableFlight.findBySearchCriteria", query = "SELECT a FROM AvailableFlight a WHERE a.departureAirportCode = :departureAirportCode"),
     @NamedQuery(name = "AvailableFlight.findByDepartureAirportCode", query = "SELECT a FROM AvailableFlight a WHERE a.departureAirportCode = :departureAirportCode"),
     @NamedQuery(name = "AvailableFlight.findByDepartureTime", query = "SELECT a FROM AvailableFlight a WHERE a.departureTime = :departureTime"),
     @NamedQuery(name = "AvailableFlight.findByArrivalAirportCode", query = "SELECT a FROM AvailableFlight a WHERE a.arrivalAirportCode = :arrivalAirportCode"),
