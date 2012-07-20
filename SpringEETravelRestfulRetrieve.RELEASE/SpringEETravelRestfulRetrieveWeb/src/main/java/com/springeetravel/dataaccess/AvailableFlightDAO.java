@@ -1,10 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
  */
 package com.springeetravel.dataaccess;
 
 import com.springeetravel.domain.AvailableFlight;
+import com.springeetravel.domain.UniversalRecord;
 import java.util.Date;
 import java.util.List;
 
@@ -15,5 +14,7 @@ import java.util.List;
 public interface AvailableFlightDAO {
 
     List<AvailableFlight> findByDepartureAirportCode(String departureAirportCode, Date departureTime, String arrivalAirportCode, Date arrivalTime);
+
+    public List<AvailableFlight> findAll();
     
 }

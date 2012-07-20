@@ -34,4 +34,8 @@ public class UniversalRecordRetrieveDAOUAPI implements UniversalRecordRetrieveDA
     public List<UniversalRecord> findByBookingPassengerName(String passengerName) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    public List<UniversalRecord> findAll() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

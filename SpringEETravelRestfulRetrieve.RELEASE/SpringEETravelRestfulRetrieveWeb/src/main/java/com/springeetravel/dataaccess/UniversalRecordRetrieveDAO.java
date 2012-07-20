@@ -23,4 +23,6 @@ public interface UniversalRecordRetrieveDAO {
     List<UniversalRecord> findByAgency(String agencyId);
 
     List<UniversalRecord> findByBookingPassengerName(String passengerName);
+
+    public List<UniversalRecord> findAll();
 }

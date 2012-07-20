@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -57,5 +58,24 @@ public class UniversalRecordRetrieveDAOJPA implements UniversalRecordRetrieveDAO
 
     private UniversalRecord find(Long id) {
         return em.find(UniversalRecord.class, id);
+    }
+
+    public List<UniversalRecord> findAll() {
+        return findRange(true, -1, -1);
+    }
+
+    public List<UniversalRecord> find(int maxResults, int firstResult) {
+        return findRange(false, maxResults, firstResult);
+    }
+
+    public List<UniversalRecord> findRange(boolean all, int maxResults, int firstResult) {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(UniversalRecord.class));
+        Query q = em.createQuery(cq);
+        if (!all) {
+            q.setMaxResults(maxResults);
+            q.setFirstResult(firstResult);
+        }
+        return q.getResultList();
     }
 }

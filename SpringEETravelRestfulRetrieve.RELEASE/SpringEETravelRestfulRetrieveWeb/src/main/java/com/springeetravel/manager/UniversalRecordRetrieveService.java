@@ -57,4 +57,9 @@ public class UniversalRecordRetrieveService {
     public List<UniversalRecord> searchUniversalRecord(UniversalRecord ur) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
+
+
+    public List<UniversalRecord> retrieveAll() {
+        return dao.findAll();
+    }
 }

@@ -33,37 +33,39 @@ public class UniversalRecordRetrieveServiceController extends AbstractRESTContro
     @Inject
     private UniversalRecordRetrieveService service;
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView getUniversalRecords() {
+        List<UniversalRecord> all = service.retrieveAll();
+        return buildModelAndView(UNIVERSAL_RECORD_XML_VIEW, all);
+    }
+
     @RequestMapping(value = "/locatorCode/{locatorCode}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByLocatorCode(@PathVariable String locatorCode) {
         UniversalRecord ur = service.retrieveUniversalRecordByLocatorCode(locatorCode);
-        return buildModelAndView(ur);
+        return buildModelAndView(UNIVERSAL_RECORD_XML_VIEW, ur);
     }
 
     @RequestMapping(value = "/passengerName/{passengerName}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByBookingPassengerName(String passengerName) {
         List<UniversalRecord> urs = service.retrieveUniversalRecordByBookingPassengerName(passengerName);
-        return buildModelAndView(urs);
+        return buildModelAndView(UNIVERSAL_RECORD_XML_VIEW, urs);
     }
 
     @RequestMapping(value = "/ticketedDateFrom/{fromDate}/ticketedDateTo/{fromDate}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAirTicketedDate(@DateTimeFormat(iso = ISO.DATE) Date fromDate, @DateTimeFormat(iso = ISO.DATE) Date toDate) {
         List<UniversalRecord> urs = service.retrieveUniversalRecordByAirTicketedDate(fromDate, toDate);
-        return buildModelAndView(urs);
+        return buildModelAndView(UNIVERSAL_RECORD_XML_VIEW, urs);
     }
 
     @RequestMapping(value = "/agentId/{agentId}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAgent(String agentId) {
         List<UniversalRecord> urs = service.retrieveUniversalRecordByAgent(agentId);
-        return buildModelAndView(urs);
+        return buildModelAndView(UNIVERSAL_RECORD_XML_VIEW, urs);
     }
 
     @RequestMapping(value = "/agencyId/{agencyId}", method = RequestMethod.GET)
     public ModelAndView getUniversalRecordByAgency(String agencyId) {
         List<UniversalRecord> urs = service.retrieveUniversalRecordByAgency(agencyId);
-        return buildModelAndView(urs);
-    }
-
-    private void log(Level level, Exception ex) {
-        Logger.getLogger(UniversalRecordRetrieveServiceController.class.getName()).log(level, null, ex);
+        return buildModelAndView(UNIVERSAL_RECORD_XML_VIEW, urs);
     }
 }

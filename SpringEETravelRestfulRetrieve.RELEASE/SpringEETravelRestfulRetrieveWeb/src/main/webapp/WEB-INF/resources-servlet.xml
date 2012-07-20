@@ -91,5 +91,13 @@
         </constructor-arg>
     </bean>
     
+    <bean id="availableFlightXmlView"
+          class="org.springframework.web.servlet.view.xml.MarshallingView">
+        <constructor-arg>
+            <bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+                <property name="autodetectAnnotations" value="true"/>
+            </bean>
+        </constructor-arg>
+    </bean>
     
 </beans>
